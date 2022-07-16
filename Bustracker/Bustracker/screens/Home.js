@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, View, Alert, Platform} from 'react-native';
+import {StyleSheet, View, Alert, Platform, Text} from 'react-native';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import {check, PERMISSIONS, request} from 'react-native-permissions';
 import Geolocation from 'react-native-geolocation-service';
+import Header from '../components/Header';
 
 const Home = () => {
   const [hasPermission, setHasPermission] = useState(false);
@@ -29,6 +30,7 @@ const Home = () => {
     } else if (Platform.OS === 'android') {
       check(PERMISSIONS.ANDROID.LOCATION_ALWAYS)
         .then(result => {
+          console.log(result);
           if (result === 'denied') {
             request(PERMISSIONS.ANDROID.LOCATION_ALWAYS).then(result => {
               setHasPermission(true);
@@ -65,13 +67,18 @@ const Home = () => {
   return (
     <View style={styles.container}>
       {initialLocation && (
-        <MapView
-          style={styles.map}
-          provider={PROVIDER_GOOGLE}
-          initialRegion={initialLocation}
-          showsUserLocation={true}
-          loadingEnabled={true}
-        />
+        <>
+          <MapView
+            style={styles.map}
+            provider={PROVIDER_GOOGLE}
+            initialRegion={initialLocation}
+            showsUserLocation={true}
+            loadingEnabled={true}
+          />
+          <View style={styles.overlay}>
+            <Header />
+          </View>
+        </>
       )}
     </View>
   );
@@ -82,8 +89,14 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
   map: {
-    flex: 1,
+    ...StyleSheet.absoluteFillObject,
+  },
+  overlay: {
+    position: 'absolute',
+    top: 50,
   },
 });

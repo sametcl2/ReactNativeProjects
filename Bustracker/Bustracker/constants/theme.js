@@ -1,11 +1,11 @@
 export const COLORS = {
-  blue: '#233CF7',
   ligthBlue: '#B4D9FE',
-  darkBlue: '#172D58',
+  blue: '#1F3BAE',
   black: '#020A1B',
   white: '#F6F6F6',
   gray: '#A1B2BF',
   green: '#35B15F',
+  red: '#C2392A',
   transparent: 'transparent',
 };
 
@@ -38,7 +38,7 @@ export const FONTS = {
   h1: {fontFamily: 'Roboto-Black', fontSize: SIZES.h1, lineHeight: 36},
   h2: {fontFamily: 'Roboto-Bold', fontSize: SIZES.h2, lineHeight: 30},
   h3: {fontFamily: 'Roboto-Bold', fontSize: SIZES.h3, lineHeight: 22},
-  h4: {fontFamily: 'Roboto-Bold', fontSize: SIZES.h4, lineHeight: 22},
+  h4: {fontFamily: 'Roboto-Bold', fontSize: SIZES.h4, lineHeight: 20},
   body1: {fontFamily: 'Roboto-Regular', fontSize: SIZES.body1, lineHeight: 36},
   body2: {fontFamily: 'Roboto-Regular', fontSize: SIZES.body2, lineHeight: 30},
   body3: {fontFamily: 'Roboto-Regular', fontSize: SIZES.body3, lineHeight: 22},
